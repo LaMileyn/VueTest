@@ -1,10 +1,8 @@
 <template>
   <div class="catalog">
-    <v-card />
-    <v-card />
-    <v-card />
-    <v-card />
-    <v-card />
+    <v-card
+        v-for="product in products" :key="product.id" :productCurr="product" />
+
   </div>
 </template>
 
@@ -14,6 +12,9 @@ export default {
   name: "v-catalog",
   components : {
     VCard
+  },
+  props : {
+    products : Array
   }
 
 }

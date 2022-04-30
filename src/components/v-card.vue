@@ -5,12 +5,11 @@
       <img src="https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album" alt="">
     </div>
     <div class="card__description">
-      <h2>Наименование товара</h2>
-      <p>Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в
-        несколько строк</p>
+      <h2>{{ productCurr.name }}</h2>
+      <p>{{ productCurr.description }}</p>
     </div>
     <div class="card__price">
-      <span>10 000руб.</span>
+      <span>{{ productCurr.price }} руб.</span>
     </div>
   </div>
 </template>
@@ -23,6 +22,9 @@ export default {
     return {
       image
     }
+  },
+  props : {
+    productCurr : Object
   }
 }
 </script>
@@ -40,6 +42,9 @@ export default {
     position: absolute;
     top: -8px;
     right: -8px;
+    display: none;
+    opacity: 0;
+    transform: translateY(-50%);
     height: 32px;
     width: 32px;
     border-radius: 10px;
@@ -47,9 +52,15 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 300ms ease;
   }
   &:hover{
     cursor: pointer;
+  }
+  &:hover .card__delete{
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
   }
 
   .card__image{

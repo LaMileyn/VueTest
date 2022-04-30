@@ -1,33 +1,48 @@
 <template>
   <div class="form">
     <div class="form__item">
-      <input id="name" type="text" placeholder="Наименование товара">
+      <input id="name" type="text" placeholder="Наименование товара" v-model="name">
       <label for="name">Наименование товара
         <div></div>
       </label>
     </div>
     <div class="form__item">
-      <textarea id="descr" type="text" placeholder="Описание товара"></textarea>
+      <textarea id="descr" type="text" placeholder="Описание товара" v-model="description"></textarea>
       <label for="descr">Описание товара</label>
     </div>
     <div class="form__item">
-      <input id="img" type="text" placeholder="Ссылка на изображение товара">
+      <input id="img" type="text" placeholder="Ссылка на изображение товара" v-model="linkToImg">
       <label for="img">Ссылка на изображение товара
-        <div></div>
       </label>
     </div>
     <div class="form__item">
-      <input id="price" type="text" placeholder="Цена товара">
+      <input id="price" type="number" placeholder="Цена товара" v-model="price">
       <label for="price">Цена товара*</label>
     </div>
-    <button class="form_button">Добавить товар
+    <button class="form_button" @click="addToList">Добавить товар
     </button>
   </div>
 </template>
 
 <script>
+
+// import {validationMixin} from 'vuelidate'
 export default {
-  name: "v-form"
+  name: "v-form",
+  data() {
+    return {
+      name : "",
+      description : "",
+      linkToImg : "",
+      price : null
+
+    }
+  },
+  methods : {
+    addToList(){
+      this.$emit("addNewProduct",{ name : this.name, description : this.description, linkToImg : this.linkToImg, price : this.price})
+    }
+  }
 }
 </script>
 
