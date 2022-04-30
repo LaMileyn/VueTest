@@ -1,5 +1,6 @@
 <template>
   <div class="catalog__card">
+    <div class="card__delete"><img v-bind:src="image" alt=""></div>
     <div class="card__image">
       <img src="https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album" alt="">
     </div>
@@ -15,19 +16,41 @@
 </template>
 
 <script>
+import image from './../assets/Vector.png'
 export default {
-  name: "v-card"
+  name: "v-card",
+  data (){
+    return {
+      image
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
 .catalog__card{
   height: 423px;
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: $color-white;
   border-radius: $borderRadiusApp;
+  .card__delete{
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    height: 32px;
+    width: 32px;
+    border-radius: 10px;
+    background-color: $color-lightRed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &:hover{
+    cursor: pointer;
+  }
 
   .card__image{
     height: 200px;

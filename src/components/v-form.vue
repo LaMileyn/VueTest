@@ -21,7 +21,6 @@
       <label for="price">Цена товара*</label>
     </div>
     <button class="form_button">Добавить товар
-      <div></div>
     </button>
   </div>
 </template>
@@ -38,6 +37,7 @@ export default {
   height: 440px;
   background-color: $color-white;
   padding: 24px;
+
 
   .form__item {
     display: flex;
