@@ -11,11 +11,17 @@
 </template>
 
 <script>
+import spinner from './../assets/spinner.gif'
 import VCard from "@/components/v-card";
 export default {
   name: "v-catalog",
   components : {
     VCard
+  },
+  data(){
+    return{
+      spinner
+    }
   },
   props : {
     products : Array

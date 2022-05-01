@@ -62,6 +62,9 @@ export default {
   }
   &:hover{
     cursor: pointer;
+    &{
+      transform: scale(1.03);
+    }
   }
   &:hover .card__delete{
     display: flex;
