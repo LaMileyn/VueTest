@@ -5,76 +5,73 @@
         <div></div>
       </label>
       <input
-
-          id="name" type="text" placeholder="Наименование товара" v-model="name">
-      <span>Поле является обязательным</span>
+          :class="v$.form.name.$error ? 'invalid_field' : '' "
+          id="name" type="text" placeholder="Наименование товара" v-model="form.name">
+      <span v-for="error of v$.form.name.$errors" :key ="error.$uid">
+       {{ error.$message }}
+      </span>
     </div>
     <div class="form__item">
       <label for="descr">Описание товара</label>
       <textarea
-          id="descr" type="text" placeholder="Описание товара" v-model="description"></textarea>
-      <span>Поле является обязательным</span>
+          id="descr" type="text" placeholder="Описание товара" v-model="form.description"></textarea>
     </div>
     <div class="form__item">
       <label for="img">Ссылка на изображение товара
       </label>
       <input
-
-          id="img"  type="text" placeholder="Ссылка на изображение товара" v-model="linkToImg">
-      <span>Поле является обязательным</span>
+          :class="v$.form.linkToImg.$error ? 'invalid_field' : '' "
+          id="img"  type="text" placeholder="Ссылка на изображение товара" v-model="form.linkToImg">
+      <span v-for="error of v$.form.linkToImg.$errors" :key ="error.$uid">
+       {{ error.$message }}
+      </span>
     </div>
-<!--    :class="$v.price.$error ? 'invalid_field' : '' "-->
     <div class="form__item">
       <label for="price">Цена товара*</label>
-      <input id="price"  type="number" placeholder="Цена товара" v-model="price">
-      <span>Поле является обязательным</span>
+      <input id="price"
+             :class="v$.form.price.$error === true ? 'invalid_field' : '' "
+             type="number" placeholder="Цена товара" v-model="form.price">
+      <span v-if="v$.form.price.$error">Поле является обязательным</span>
     </div>
-    <button class="form_button" @click.prevent="addToList">Добавить товар
+    <button v-if="v$.form.$errors.length === 0 && ( Object.keys(form).filter( key => key != 'description').every( key => form[key] ) ) " class="form_button_active" @click.prevent="addToList">Добавить товар
+    </button>
+    <button v-if="v$.form.$errors.length !== 0 || ( Object.keys(form).filter( key => key != 'description').some( key => !form[key] ) ) " class="form_button">Добавить товар
     </button>
   </form>
 </template>
 
 <script>
 
-
-// import { validationMixin } from 'vuelidate'
-// import { required } from 'vuelidate/lib/validators'
+import useVuelidate from '@vuelidate/core'
+import { required, url, helpers } from "@vuelidate/validators"
 
 export default {
   name: "v-form",
-  // mixins: [validationMixin],
   data() {
     return {
+      v$ : useVuelidate(),
+      form : {
         name : "",
         description : "",
         linkToImg : "",
         price : null
+      }
     }
   },
-  // validations: {
-  //     name : {
-  //       required
-  //     },
-  //     price : {
-  //       required
-  //     },
-  //     linkToImg: {
-  //       required
-  //     }
-  // },
+  validations(){
+    return {
+      form : {
+        name : { required: helpers.withMessage("Наименование товара является обязательным полем",required), $autoDirty: true },
+        linkToImg : { required, url : helpers.withMessage("Введите правильный url",url), $autoDirty: true },
+        price : { required, $autoDirty: true}
+      }
+    }
+  },
   methods : {
     addToList(){
-      this.$emit("addNewProduct",{ name : this.name, description : this.description, linkToImg : this.linkToImg, price : this.price})
+      this.$emit("addNewProduct",{ name : this.form.name, description : this.form.description, linkToImg : this.form.linkToImg, price : this.form.price})
     },
-    // submit(){
-    //     this.$v.$touch()
-    // }
-    // checkForm(){
-    //   this.$v.form.$touch()
-    //   if (!this.$v.form.$error){
-    //     console.log("ВАлидация прошла успешно")
-    //   }
-    // }
+
   },
 
 }
@@ -83,7 +80,10 @@ export default {
 <style scoped lang="scss">
 .form {
   min-width: 330px;
-  height: 440px;
+  //min-height: 440px;
+  //height: auto;
+  height: 100%;
+  border-radius: $borderRadiusApp;
   background-color: $color-white;
   padding: 24px;
 
@@ -153,9 +153,19 @@ export default {
     padding-top: 10px;
     padding-bottom: 11px;
     border-radius: 10px;
-    cursor: pointer;
     color: $color-lowGrey;
+    //margin-bottom: 24px;
+    background-color: $backgroundButton-disabled;
+  }
+  .form_button_active{
+    border: none;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 11px;
+    border-radius: 10px;
     background-color: $backgroundButton-normal;
+    color: $buttonNormal-color;
+    cursor: pointer;
   }
 
 }
