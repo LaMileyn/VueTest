@@ -6,7 +6,7 @@
     </div>
     <div class="card__description">
       <h2>{{ productCurr.name }}</h2>
-      <p>{{ productCurr.description }} {{productCurr.id}}</p>
+      <p>{{ productCurr.description }}</p>
     </div>
     <div class="card__price">
       <span>{{ productCurr.price }} руб.</span>
@@ -42,6 +42,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   background: $color-white;
+  transition: all 200ms;
   border-radius: $borderRadiusApp;
   .card__delete{
     position: absolute;
@@ -80,7 +81,7 @@ export default {
 
   .card__description{
     display: flex;
-    justify-content: space-between;
+    gap: 1rem;
     flex-direction: column;
     height: 100%;
     padding: 16px 16px 32px 16px;

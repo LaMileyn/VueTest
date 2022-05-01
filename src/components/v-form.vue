@@ -29,7 +29,7 @@
       <input id="price"  type="number" placeholder="Цена товара" v-model="price">
       <span>Поле является обязательным</span>
     </div>
-    <button class="form_button" @click="addToList">Добавить товар
+    <button class="form_button" @click.prevent="addToList">Добавить товар
     </button>
   </form>
 </template>

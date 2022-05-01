@@ -64,7 +64,7 @@ export default {
   methods : {
     addNewProduct(data){
       let new_one = data
-      data["id"] = new Date().getSeconds()
+      data["id"] = new Date().getSeconds() * Math.random()
       this.productList.push(new_one)
       localStorage.setItem("productList",JSON.stringify(this.productList))
     },

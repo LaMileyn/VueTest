@@ -2,12 +2,12 @@
   <div class="catalog" v-if="products.length === 0">
     <h2 class="catalog__no-items">Товаров пока нет........</h2>
   </div>
-  <div class="catalog" v-if="products.length > 0">
+  <transition-group name ="list" class="catalog" v-if="products.length > 0" tag="div">
     <v-card
         @deletion = "deletionCard"
         v-for="product in products" :key="product.id" :productCurr="product" />
 
-  </div>
+  </transition-group>
 </template>
 
 <script>
@@ -30,6 +30,34 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.list-enter-active{
+  animation: started .6s;
+}
+.list-leave-active{
+  animation: ended .6s;
+}
+@keyframes started {
+  0%{
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes ended {
+  0%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100%{
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
 .catalog{
   position: relative;
   display: grid;
