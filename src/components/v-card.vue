@@ -1,12 +1,12 @@
 <template>
   <div class="catalog__card">
-    <div class="card__delete"><img v-bind:src="image" alt=""></div>
+    <div class="card__delete" @click ="deleteCard"><img v-bind:src="image" alt=""></div>
     <div class="card__image">
       <img src="https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album" alt="">
     </div>
     <div class="card__description">
       <h2>{{ productCurr.name }}</h2>
-      <p>{{ productCurr.description }}</p>
+      <p>{{ productCurr.description }} {{productCurr.id}}</p>
     </div>
     <div class="card__price">
       <span>{{ productCurr.price }} руб.</span>
@@ -25,6 +25,11 @@ export default {
   },
   props : {
     productCurr : Object
+  },
+  methods : {
+    deleteCard(){
+      this.$emit("deletion",this.$props.productCurr.id)
+    }
   }
 }
 </script>

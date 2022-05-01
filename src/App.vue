@@ -4,7 +4,7 @@
       <v-header />
       <div class="contentWrapper">
         <v-form @addNewProduct ="addNewProduct"/>
-        <v-catalog :products ="this.productList"/>
+        <v-catalog :products ="this.productList" @delet = "cardDelete"/>
       </div>
     </div>
   </div>
@@ -63,7 +63,13 @@ export default {
   },
   methods : {
     addNewProduct(data){
-      this.productList.push(data)
+      let new_one = data
+      data["id"] = new Date().getSeconds()
+      this.productList.push(new_one)
+      localStorage.setItem("productList",JSON.stringify(this.productList))
+    },
+    cardDelete(id){
+      this.productList = this.productList.filter( product => product.id !== id)
       localStorage.setItem("productList",JSON.stringify(this.productList))
     }
   }
