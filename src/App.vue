@@ -1,4 +1,10 @@
 <template>
+  <transition name ="fade">
+    <div class="success_card_action" v-if="showModalSuccess">
+      <img v-bind:src="arrow" alt="hhrt">
+      <span>Товар успешно добавлен!</span>
+    </div>
+  </transition>
   <div class="project">
     <div class="mainContainer">
       <v-header @changeSorting="sortChange"/>
@@ -14,6 +20,7 @@
 import VHeader from "@/components/v-header";
 import VForm from "@/components/v-form";
 import VCatalog from "@/components/v-catalog";
+import arrow from './assets/check.png'
 
 export default {
   name: 'App',
@@ -22,7 +29,9 @@ export default {
   },
   data() {
     return {
-      standartProductList : localStorage.getItem("productList") ? JSON.parse(localStorage.getItem("productList")) : [
+      showModalSuccess : false,
+      arrow,
+      standartProductList: localStorage.getItem("productList") ? JSON.parse(localStorage.getItem("productList")) : [
         {
           id: 1,
           name: "Наименование товара",
@@ -100,6 +109,8 @@ export default {
   },
   methods: {
     addNewProduct(data) {
+      this.showModalSuccess = true
+      setTimeout( () => this.showModalSuccess = false,2000)
       let new_one = data
       data["id"] = new Date().getSeconds() * Math.random()
       this.productList.push(new_one)
@@ -119,7 +130,7 @@ export default {
           break;
         case "Standart":
           console.log(this.productList == this.standartProductList)
-          this.productList = [...this.standartProductList ]
+          this.productList = [...this.standartProductList]
           break;
       }
     }
@@ -128,6 +139,52 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.fade-enter-active{
+  animation: started .6s;
+}
+.fade-leave-active{
+  animation: ended .6s;
+}
+@keyframes started {
+  0%{
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes ended {
+  0%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100%{
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+
+.success_card_action {
+  position: fixed;
+  bottom: 1.5rem;
+  z-index: 999;
+  right: 1.5rem;
+  border-radius: $borderRadiusApp;
+  background-color: #dbdae0;
+  padding: 8px 25px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+  }
+}
 
 .project {
   padding-top: 5rem;
