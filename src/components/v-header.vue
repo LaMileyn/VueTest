@@ -2,18 +2,35 @@
   <div class="header">
     <h1>Добавление товара</h1>
     <div class="header__sortBy">
-      <select>
-        <option value="По умолчанию">По умолчанию</option>
-        <option value="От меньшего к большему">От меньшего к большему</option>
-        <option value="От большего к меньшему">От большего к меньшему</option>
-      </select>
+      <!--      <div></div>-->
+      <div class="select">
+        <select @change="onChange($event)"  v-model="sortBy">
+          <option value="Standart" selected ="selected">По умолчанию</option>
+          <option value="FromSmall">От меньшего к большему</option>
+          <option value="FromBig">От большего к меньшему</option>
+        </select>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+
+
 export default {
-  name: "v-header"
+  name: "v-header",
+  data(){
+    return {
+      sortBy : "Standart"
+    }
+  },
+  methods : {
+    onChange(event){
+      console.log(event.target.value)
+      this.$emit("changeSorting",event.target.value)
+    }
+  }
+
 }
 </script>
 
@@ -22,8 +39,12 @@ export default {
   display: flex;
   justify-content: space-between;
 }
-.header__sortBy select{
+
+.header__sortBy select {
   padding-top: 10px;
+  min-width: 250px;
+  position: relative;
+  cursor: pointer;
   padding-bottom: 11px;
   border: none;
   box-shadow: $boxShadow-inputs;
@@ -37,5 +58,25 @@ export default {
   -webkit-appearance: none;
   -moz-appearance: radio-container;
   appearance: none;
+
 }
+.select{
+  position: relative;
+  display: inline-block;
+
+  &::after{
+    content: url('./../assets/strelka.png');
+    padding: 0 8px;
+    font-size: 12px;
+    position: absolute;
+    right: 8px;
+    top: 10px;
+    z-index: 1;
+    text-align: center;
+    width: 10%;
+    height: 100%;
+    pointer-events: none;
+  }
+}
+
 </style>
