@@ -116,6 +116,7 @@ export default {
       if (!data["description"].length) data['description'] = "Описание товара отсутствует"
       this.productList.push(new_one)
       this.standartProductList.push(new_one)
+      // this.sortChange("")
       localStorage.setItem("productList", JSON.stringify(this.productList))
     },
     cardDelete(id) {
@@ -126,10 +127,18 @@ export default {
     sortChange(sortBy) {
       switch (sortBy) {
         case "FromBig":
-          this.productList = this.productList.sort((x, y) => y.price - x.price)
+          this.productList = this.productList.sort((x, y) => {
+            let xPrice = Number(String(x.price).split(" ").join(""))
+            let yPrice = Number(String(y.price).split(" ").join(""))
+            return yPrice - xPrice
+          })
           break
         case "FromSmall":
-          this.productList = this.productList.sort((x, y) => x.price - y.price)
+          this.productList = this.productList.sort((x, y) =>{
+            let xPrice = Number(String(x.price).split(" ").join(""))
+            let yPrice = Number(String(y.price).split(" ").join(""))
+            return xPrice - yPrice
+          } )
           break;
         case "Standart":
           console.log(this.standartProductList)

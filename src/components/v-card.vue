@@ -9,7 +9,7 @@
       <p>{{ productCurr.description }}</p>
     </div>
     <div class="card__price">
-      <span>{{ productCurr.price }} руб.</span>
+      <span>{{ productCurr.price }} р</span>
     </div>
   </div>
 </template>

@@ -12,12 +12,13 @@
       </span>
     </div>
     <div class="form__item">
-      <label for="descr">Описание товара</label>
+      <label for="descr">Описание товара<div></div></label>
       <textarea
           id="descr" type="text" placeholder="Описание товара" v-model="form.description"></textarea>
     </div>
     <div class="form__item">
       <label for="img">Ссылка на изображение товара
+        <div></div>
       </label>
       <input
           :class="v$.form.linkToImg.$error ? 'invalid_field' : '' "
@@ -27,10 +28,10 @@
       </span>
     </div>
     <div class="form__item">
-      <label for="price">Цена товара*</label>
+      <label for="price">Цена товара<div></div></label>
       <input id="price"
              :class="v$.form.price.$error === true ? 'invalid_field' : '' "
-             type="number" placeholder="Цена товара" v-model="form.price">
+             type="text" placeholder="Цена товара" v-model.lazy="form.price" v-money="money">
       <span v-if="v$.form.price.$error">Поле является обязательным</span>
     </div>
     <button v-if="v$.form.$errors.length === 0 && ( Object.keys(form).filter( key => key != 'description').every( key => form[key] ) ) " class="form_button_active" @click.prevent="addToList">Добавить товар
@@ -44,9 +45,10 @@
 
 import useVuelidate from '@vuelidate/core'
 import { required, url, helpers } from "@vuelidate/validators"
-
+import {VMoney} from 'v-money'
 export default {
   name: "v-form",
+  directives : { money : VMoney},
   data() {
     return {
       v$ : useVuelidate(),
@@ -55,6 +57,14 @@ export default {
         description : "",
         linkToImg : "",
         price : null
+      },
+      money: {
+        decimal: '',
+        thousands: ' ',
+        prefix: '',
+        suffix: '',
+        precision: 0,
+        masked: false
       }
     }
   },
@@ -62,14 +72,22 @@ export default {
     return {
       form : {
         name : { required: helpers.withMessage("Наименование товара является обязательным полем",required), $autoDirty: true },
-        linkToImg : { required, url : helpers.withMessage("Введите правильный url",url), $autoDirty: true },
+        linkToImg : { required : helpers.withMessage("Данное поле является обязательным",required), url : helpers.withMessage("Введите правильный url",url), $autoDirty: true },
         price : { required, $autoDirty: true}
       }
     }
   },
   methods : {
     addToList(){
-      this.$emit("addNewProduct",{ name : this.form.name, description : this.form.description, linkToImg : this.form.linkToImg, price : this.form.price})
+
+      this.$emit("addNewProduct",{ name : this.form.name, description : this.form.description, linkToImg : this.form.linkToImg, price : this.form.price })
+      this.form = {
+        name : "",
+        description : "",
+        linkToImg : "",
+        price : null
+      }
+      this.v$.form.$reset()
     },
 
   },
