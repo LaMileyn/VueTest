@@ -44,8 +44,6 @@
 
 import useVuelidate from '@vuelidate/core'
 import { required, url, helpers } from "@vuelidate/validators"
-// import {TheMask} from 'vue-the-mask'
-// import createNumberMask from "text-mask-addons/dist/createNumberMask";
 
 export default {
   name: "v-form",
@@ -73,12 +71,6 @@ export default {
     addToList(){
       this.$emit("addNewProduct",{ name : this.form.name, description : this.form.description, linkToImg : this.form.linkToImg, price : this.form.price})
     },
-    // currencyMask: createNumberMask({
-    //   prefix: "",
-    //   includeThousandsSeparator: true,
-    //   allowNegative: false,
-    //   thousandsSeparatorSymbol: ".",
-    // }),
 
   },
 
@@ -87,15 +79,18 @@ export default {
 
 <style scoped lang="scss">
 .form {
-  min-width: 330px;
-  //min-height: 440px;
-  //height: auto;
+  width: 100%;
+  max-width: 330px;
   height: 100%;
   border-radius: $borderRadiusApp;
   background-color: $color-white;
   padding: 24px;
 
-
+  @media screen and (max-width: 877px) {
+      &{
+        max-width: 100%;
+      }
+  }
   .form__item {
     display: flex;
     margin-bottom: 16px;

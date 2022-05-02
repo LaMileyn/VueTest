@@ -8,6 +8,7 @@
           <option value="Standart" selected ="selected">По умолчанию</option>
           <option value="FromSmall">От меньшего к большему</option>
           <option value="FromBig">От большего к меньшему</option>
+          <option value="Name">По наименованию</option>
         </select>
       </div>
     </div>
@@ -26,7 +27,6 @@ export default {
   },
   methods : {
     onChange(event){
-      console.log(event.target.value)
       this.$emit("changeSorting",event.target.value)
     }
   }
@@ -38,6 +38,10 @@ export default {
 .header {
   display: flex;
   justify-content: space-between;
+  @media screen and ( max-width: 580px)  {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
 
 .header__sortBy select {

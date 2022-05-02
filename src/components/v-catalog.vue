@@ -6,7 +6,6 @@
     <v-card
         @deletion = "deletionCard"
         v-for="product in products" :key="product.id" :productCurr="product" />
-
   </transition-group>
 </template>
 
@@ -67,10 +66,23 @@ export default {
 .catalog{
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(332px,1fr));
+  grid-template-columns: repeat(auto-fill,minmax(283px,1fr));
   gap: $cards-gap;
   margin-left: $cards-gap;
   width: 100%;
+
+  @media screen and (max-width: 1228px){
+      &{
+        grid-template-columns: repeat(auto-fill,minmax(248px,1fr));
+      }
+  }
+  @media screen and (max-width: 877px){
+    &{
+      margin-left: 0;
+      margin-top: 50px;
+    }
+  }
+
   .catalog__no-items{
     position: absolute;
     transform: translate(-50%,-50%);

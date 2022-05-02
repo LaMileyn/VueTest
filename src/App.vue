@@ -113,11 +113,14 @@ export default {
       setTimeout( () => this.showModalSuccess = false,2000)
       let new_one = data
       data["id"] = new Date().getSeconds() * Math.random()
+      if (!data["description"].length) data['description'] = "Описание товара отсутствует"
       this.productList.push(new_one)
+      this.standartProductList.push(new_one)
       localStorage.setItem("productList", JSON.stringify(this.productList))
     },
     cardDelete(id) {
       this.productList = this.productList.filter(product => product.id !== id)
+      this.standartProductList = this.standartProductList.filter(product => product.id !== id)
       localStorage.setItem("productList", JSON.stringify(this.productList))
     },
     sortChange(sortBy) {
@@ -129,8 +132,19 @@ export default {
           this.productList = this.productList.sort((x, y) => x.price - y.price)
           break;
         case "Standart":
-          console.log(this.productList == this.standartProductList)
+          console.log(this.standartProductList)
           this.productList = [...this.standartProductList]
+          break;
+        case "Name":
+          this.productList = this.productList.sort((x, y) => {
+            if( x.name < y.name ){
+              return -1
+            }
+            if (x.name > y.name ){
+              return 1
+            }
+            return 0
+          })
           break;
       }
     }
@@ -196,10 +210,20 @@ export default {
   margin: 0 auto;
   width: 1440px;
   max-width: 90%;
+  @media screen and (max-width: 877px){
+    &{
+      max-width: 100%;
+    }
+  }
 
   .contentWrapper {
     display: flex;
     margin-top: 16px;
+    @media screen and (max-width: 877px){
+      &{
+        flex-direction: column;
+      }
+    }
   }
 }
 
