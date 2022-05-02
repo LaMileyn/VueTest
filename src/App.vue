@@ -167,6 +167,7 @@ export default {
 
 <style lang="scss" scoped>
 
+// ---------------------- animations
 .fade-enter-active{
   animation: started .6s;
 }
@@ -193,6 +194,8 @@ export default {
     transform: translateX(100px);
   }
 }
+// ---------------------- animations
+
 
 .success_card_action {
   position: fixed;

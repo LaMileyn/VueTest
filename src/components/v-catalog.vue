@@ -36,6 +36,8 @@ export default {
 
 <style scoped lang="scss">
 
+//---------------------- animations
+
 .list-enter-active{
   animation: started .6s;
 }
@@ -62,6 +64,8 @@ export default {
     transform: translateX(100px);
   }
 }
+
+//---------------------- animations
 
 .catalog{
   position: relative;

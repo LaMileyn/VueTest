@@ -42,13 +42,12 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   background: $color-white;
-  transition: all 200ms;
+  transition: all 300ms;
   border-radius: $borderRadiusApp;
   .card__delete{
     position: absolute;
     top: -8px;
     right: -8px;
-    display: none;
     opacity: 0;
     transform: translateY(-50%);
     height: 32px;
@@ -67,7 +66,6 @@ export default {
     }
   }
   &:hover .card__delete{
-    display: flex;
     opacity: 1;
     transform: translateY(0);
   }
@@ -102,9 +100,5 @@ export default {
   }
 
 }
-
-//.catalog__card:nth-child(3n + 1){
-//  margin-left: 0;
-//}
 
 </style>
