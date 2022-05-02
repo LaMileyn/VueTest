@@ -34,9 +34,9 @@
              type="text" placeholder="Цена товара" v-model.lazy="form.price" v-money="money">
       <span v-if="v$.form.price.$error">Поле является обязательным</span>
     </div>
-    <button v-if="v$.form.$errors.length === 0 && ( Object.keys(form).filter( key => key != 'description').every( key => form[key] ) ) " class="form_button_active" @click.prevent="addToList">Добавить товар
+    <button v-if="v$.form.$error == false && v$.form.$dirty == true " class="form_button_active" @click.prevent="addToList">Добавить товар
     </button>
-    <button v-if="v$.form.$errors.length !== 0 || ( Object.keys(form).filter( key => key != 'description').some( key => !form[key] ) ) " class="form_button" @click.prevent>Добавить товар
+    <button v-if=" ( v$.form.$error == false &&  v$.form.$dirty == false ) || ( v$.form.$error == true &&  v$.form.$dirty == true )   " class="form_button" @click.prevent>Добавить товар
     </button>
   </form>
 </template>
@@ -88,6 +88,7 @@ export default {
         price : null
       }
       this.v$.form.$reset()
+
     },
 
   },
