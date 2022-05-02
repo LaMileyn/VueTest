@@ -27,6 +27,7 @@ export default {
   },
   methods : {
     onChange(event){
+      this.$emit("changeCurrentSorting",event.target.value)
       this.$emit("changeSorting",event.target.value)
     }
   }

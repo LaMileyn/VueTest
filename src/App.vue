@@ -7,7 +7,7 @@
   </transition>
   <div class="project">
     <div class="mainContainer">
-      <v-header @changeSorting="sortChange"/>
+      <v-header @changeSorting="sortChange" @changeCurrentSorting="currentSortTypeChange"/>
       <div class="contentWrapper">
         <v-form @addNewProduct="addNewProduct"/>
         <v-catalog :products="this.productList" @delet="cardDelete"/>
@@ -29,6 +29,7 @@ export default {
   },
   data() {
     return {
+      currentSortType : "Standart",
       showModalSuccess : false,
       arrow,
       standartProductList: localStorage.getItem("productList") ? JSON.parse(localStorage.getItem("productList")) : [
@@ -116,8 +117,11 @@ export default {
       if (!data["description"].length) data['description'] = "Описание товара отсутствует"
       this.productList.push(new_one)
       this.standartProductList.push(new_one)
-      // this.sortChange("")
+      this.sortChange(this.currentSortType)
       localStorage.setItem("productList", JSON.stringify(this.productList))
+    },
+    currentSortTypeChange(type){
+      this.currentSortType = type
     },
     cardDelete(id) {
       this.productList = this.productList.filter(product => product.id !== id)
