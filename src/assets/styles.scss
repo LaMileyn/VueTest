@@ -1,0 +1,30 @@
+@import "./variables";
+
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline : none;
+}
+body{
+  font-family: $font-main;
+  background-color: $background-app;
+}
+h1{
+  font-size: 28px;
+  color: $color-black;
+  line-height: 35px;
+  font-weight: 600;
+}
+h2{
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: 600;
+  color: $color-black;
+}
+p{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}

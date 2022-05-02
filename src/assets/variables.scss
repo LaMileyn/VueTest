@@ -1,0 +1,23 @@
+// Fonts imports
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap');
+//----------------------------------------------------------------------------------------------------------------------------
+//Colors App
+$color-black: #3F3F3F;
+$background-app: #faf9f7;
+$color-white: #FFFEFB;
+$color-lightRed: #FF8484;
+$color-lowGrey: #B4B4B4;
+$color-label: #49485E;
+//Fonts App
+$font-main: 'Source Sans Pro', sans-serif;
+//Box shadow
+$boxShadow-cards: 0px 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02);
+$boxShadow-inputs: 0px 2px 5px rgba(0, 0, 0, 0.1);
+//Border radius
+$borderRadiusApp: 4px;
+//Button
+$backgroundButton-normal: #7BAE73;
+$backgroundButton-disabled: #EEEEEE;
+$buttonNormal-color: #FFFFFF;
+//Gaps
+$cards-gap: 16px;
