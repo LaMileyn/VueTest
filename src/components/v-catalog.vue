@@ -73,7 +73,7 @@ export default {
 
   @media screen and (max-width: 1228px){
       &{
-        grid-template-columns: repeat(auto-fill,minmax(248px,1fr));
+        grid-template-columns: repeat(auto-fill,minmax(208px,1fr));
       }
   }
   @media screen and (max-width: 877px){

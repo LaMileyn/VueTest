@@ -38,35 +38,35 @@ export default {
           name: "Наименование товара",
           description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           price: 167,
-          image: "https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album"
+          image: "https://www.rollingstone.com/wp-content/uploads/2021/01/AdobeStock_114315835.jpeg"
         },
         {
           id: 2,
           name: "Наименование товара",
           description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           price: 10,
-          image: "https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album"
+          image: "https://www.rollingstone.com/wp-content/uploads/2021/01/AdobeStock_114315835.jpeg"
         },
         {
           id: 3,
           name: "Наименование товара",
           description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           price: 555,
-          image: "https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album"
+          image: "https://www.rollingstone.com/wp-content/uploads/2021/01/AdobeStock_114315835.jpeg"
         },
         {
           id: 4,
           name: "Наименование товара",
           description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           price: 1300,
-          image: "https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album"
+          image: "https://www.rollingstone.com/wp-content/uploads/2021/01/AdobeStock_114315835.jpeg"
         },
         {
           id: 5,
           name: "Наименование товара",
           description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           price: 7,
-          image: "https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album"
+          image: "https://www.rollingstone.com/wp-content/uploads/2021/01/AdobeStock_114315835.jpeg"
         }
       ],
       productList: localStorage.getItem("productList") ? JSON.parse(localStorage.getItem("productList")) : [
@@ -75,35 +75,35 @@ export default {
           name: "Наименование товара",
           description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           price: 167,
-          image: "https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album"
+          image: "https://www.rollingstone.com/wp-content/uploads/2021/01/AdobeStock_114315835.jpeg"
         },
         {
           id: 2,
           name: "Наименование товара",
           description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           price: 10,
-          image: "https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album"
+          image: "https://www.rollingstone.com/wp-content/uploads/2021/01/AdobeStock_114315835.jpeg"
         },
         {
           id: 3,
           name: "Наименование товара",
           description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           price: 555,
-          image: "https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album"
+          image: "https://www.rollingstone.com/wp-content/uploads/2021/01/AdobeStock_114315835.jpeg"
         },
         {
           id: 4,
           name: "Наименование товара",
           description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           price: 1300,
-          image: "https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album"
+          image: "https://www.rollingstone.com/wp-content/uploads/2021/01/AdobeStock_114315835.jpeg"
         },
         {
           id: 5,
           name: "Наименование товара",
           description: "Довольно-таки интересное описание товара в несколько строк. Довольно-таки интересное описание товара в несколько строк",
           price: 7,
-          image: "https://sun1.is74.userapi.com/s/v1/ig2/kwtXwU8sT2NGzs2mJE1TTmnViY2a0ULl_F58QNB9bGCCljs_EfIgKfI1ScBLADJnJjPeNwL0rGkev0AGICfOYGxO.jpg?size=373x223&quality=96&type=album"
+          image: "https://www.rollingstone.com/wp-content/uploads/2021/01/AdobeStock_114315835.jpeg"
         }
       ]
     }

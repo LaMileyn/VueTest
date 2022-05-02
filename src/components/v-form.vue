@@ -21,9 +21,9 @@
         <div></div>
       </label>
       <input
-          :class="v$.form.linkToImg.$error ? 'invalid_field' : '' "
-          id="img"  type="text" placeholder="Ссылка на изображение товара" v-model="form.linkToImg">
-      <span v-for="error of v$.form.linkToImg.$errors" :key ="error.$uid">
+          :class="v$.form.image.$error ? 'invalid_field' : '' "
+          id="img"  type="text" placeholder="Ссылка на изображение товара" v-model="form.image">
+      <span v-for="error of v$.form.image.$errors" :key ="error.$uid">
        {{ error.$message }}
       </span>
     </div>
@@ -55,7 +55,7 @@ export default {
       form : {
         name : "",
         description : "",
-        linkToImg : "",
+        image : "",
         price : null
       },
       money: {
@@ -72,7 +72,7 @@ export default {
     return {
       form : {
         name : { required: helpers.withMessage("Наименование товара является обязательным полем",required), $autoDirty: true },
-        linkToImg : { required : helpers.withMessage("Данное поле является обязательным",required), url : helpers.withMessage("Введите правильный url",url), $autoDirty: true },
+        image : { required : helpers.withMessage("Данное поле является обязательным",required), url : helpers.withMessage("Введите правильный url",url), $autoDirty: true },
         price : { required, $autoDirty: true}
       }
     }
@@ -80,7 +80,7 @@ export default {
   methods : {
     addToList(){
 
-      this.$emit("addNewProduct",{ name : this.form.name, description : this.form.description, linkToImg : this.form.linkToImg, price : this.form.price })
+      this.$emit("addNewProduct",{ name : this.form.name, description : this.form.description, image : this.form.image, price : this.form.price })
       this.form = {
         name : "",
         description : "",
