@@ -36,7 +36,7 @@ export default {
 
 <style scoped lang="scss">
 .catalog__card{
-  height: 423px;
+  min-height: 423px;
   position: relative;
   display: flex;
   flex-direction: column;
