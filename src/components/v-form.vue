@@ -36,7 +36,7 @@
     </div>
     <button v-if="v$.form.$errors.length === 0 && ( Object.keys(form).filter( key => key != 'description').every( key => form[key] ) ) " class="form_button_active" @click.prevent="addToList">Добавить товар
     </button>
-    <button v-if="v$.form.$errors.length !== 0 || ( Object.keys(form).filter( key => key != 'description').some( key => !form[key] ) ) " class="form_button">Добавить товар
+    <button v-if="v$.form.$errors.length !== 0 || ( Object.keys(form).filter( key => key != 'description').some( key => !form[key] ) ) " class="form_button" @click.prevent>Добавить товар
     </button>
   </form>
 </template>
